@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демо всех проектов - Портфолио</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .demo-container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .demo-header { text-align: center; color: white; margin-bottom: 50px; }
+        .demo-header h1 { font-size: 3.5rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .demo-header p { font-size: 1.3rem; opacity: 0.9; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+        .project-demo { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .project-demo:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(0,0,0,0.3); }
+        .project-demo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #667eea, #764ba2); }
+        .project-title { color: #667eea; font-size: 1.8rem; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
+        .project-icon { font-size: 2.5rem; }
+        .project-description { color: #666; margin-bottom: 25px; line-height: 1.6; }
+        .project-features { margin: 25px 0; }
+        .project-features h4 { color: #555; margin-bottom: 15px; font-size: 1.1rem; }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .feature-item { padding: 8px 12px; background: #f8f9fa; border-radius: 8px; font-size: 0.9rem; color: #555; border-left: 3px solid #667eea; }
+        .project-tech { margin: 25px 0; }
+        .project-tech h4 { color: #555; margin-bottom: 15px; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tech-tag { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; }
+        .project-stats { display: flex; justify-content: space-around; margin: 25px 0; padding: 20px; background: #f8f9fa; border-radius: 12px; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 1.5rem; font-weight: bold; color: #667eea; }
+        .stat-label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
+        .demo-buttons { display: flex; gap: 15px; margin-top: 30px; }
+        .demo-btn { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; font-weight: 500; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .demo-btn.primary { background: #667eea; color: white; }
+        .demo-btn.primary:hover { background: #5a67d8; transform: translateY(-2px); }
+        .demo-btn.secondary { background: #f8f9fa; color: #667eea; border: 2px solid #667eea; }
+        .demo-btn.secondary:hover { background: #667eea; color: white; }
+        .back-btn { position: fixed; top: 20px; left: 20px; background: rgba(255,255,255,0.2); color: white; padding: 12px 24px; border: none; border-radius: 25px; cursor: pointer; backdrop-filter: blur(10px); font-weight: 500; }
+        .back-btn:hover { background: rgba(255,255,255,0.3); }
+        .credentials { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px; }
+        .credentials h5 { color: #667eea; margin-bottom: 10px; }
+        .credential { font-family: 'Courier New', monospace; font-size: 0.85rem; color: #555; margin: 5px 0; }
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .demo-header h1 { font-size: 2.5rem; }
+            .project-demo { padding: 25px; }
+            .demo-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html'">← Назад к портфолио</button>
+    
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🚀 Демо всех проектов</h1>
+            <p>Интерактивные демонстрации созданных проектов в демо-режиме</p>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- E-commerce Platform -->
+            <div class="project-demo">
+                <div class="project-title">
+                    <span class="project-icon">🛍️</span>
+                    <span>E-commerce Platform</span>
+                </div>
+                <p class="project-description">
+                    Enterprise-уровень платформа электронной коммерции с полным циклом управления товарами, заказами, пользователями и аналитикой.
+                </p>
+                
+                <div class="project-features">
+                    <h4>Ключевые возможности:</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">Админ-панель с 12 разделами</div>
+                        <div class="feature-item">Система купонов и скидок</div>
+                        <div class="feature-item">API интеграции</div>
+                        <div class="feature-item">A/B тестирование</div>
+                        <div class="feature-item">Массовые операции</div>
+                        <div class="feature-item">Резервное копирование</div>
+                    </div>
+                </div>
+                
+                <div class="project-tech">
+                    <h4>Технологии:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Vue.js 3</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Vuex</span>
+                    </div>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="stat">
+                        <div class="stat-value">50+</div>
+                        <div class="stat-label">Компонентов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">25+</div>
+                        <div class="stat-label">Страниц</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">Функций</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">15K+</div>
+                        <div class="stat-label">Строк кода</div>
+                    </div>
+                </div>
+                
+                <div class="credentials">
+                    <h5>Тестовые аккаунты:</h5>
+                    <div class="credential"><strong>Админ:</strong> admin@example.com / admin</div>
+                    <div class="credential"><strong>Пользователь:</strong> user@example.com / user</div>
+                </div>
+                
+                <div class="demo-buttons">
+                    <a href="ecommerce-platform/demo/index.html" class="demo-btn primary">
+                        🚀 Открыть демо
+                    </a>
+                    <a href="ecommerce-platform/" class="demo-btn secondary">
+                        📁 Исходный код
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Financial Dashboard -->
+            <div class="project-demo">
+                <div class="project-title">
+                    <span class="project-icon">📈</span>
+                    <span>Financial Dashboard</span>
+                </div>
+                <p class="project-description">
+                    Аналитическая панель для финансового мониторинга с интерактивными графиками, ML-прогнозированием и автоматическими алертами.
+                </p>
+                
+                <div class="project-features">
+                    <h4>Ключевые возможности:</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">Интерактивные графики</div>
+                        <div class="feature-item">ML-прогнозирование</div>
+                        <div class="feature-item">Система алертов</div>
+                        <div class="feature-item">Экспорт в Excel/PDF</div>
+                        <div class="feature-item">Банковские API</div>
+                        <div class="feature-item">Кастомные дашборды</div>
+                    </div>
+                </div>
+                
+                <div class="project-tech">
+                    <h4>Технологии:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Vue.js 3</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="stat">
+                        <div class="stat-value">28+</div>
+                        <div class="stat-label">Компонентов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">12+</div>
+                        <div class="stat-label">Страниц</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">45+</div>
+                        <div class="stat-label">Функций</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">9.5K+</div>
+                        <div class="stat-label">Строк кода</div>
+                    </div>
+                </div>
+                
+                <div class="demo-buttons">
+                    <a href="financial-dashboard/demo/index.html" class="demo-btn primary">
+                        📊 Открыть демо
+                    </a>
+                    <a href="financial-dashboard/" class="demo-btn secondary">
+                        📁 Исходный код
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Social Media Platform -->
+            <div class="project-demo">
+                <div class="project-title">
+                    <span class="project-icon">📱</span>
+                    <span>Social Media Platform</span>
+                </div>
+                <p class="project-description">
+                    Социальная платформа с системой постов, комментариев, лайков, подписок, real-time чатом и мобильным приложением.
+                </p>
+                
+                <div class="project-features">
+                    <h4>Ключевые возможности:</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">Система постов с медиа</div>
+                        <div class="feature-item">Real-time чат</div>
+                        <div class="feature-item">Подписки и рекомендации</div>
+                        <div class="feature-item">AI модерация</div>
+                        <div class="feature-item">React Native приложение</div>
+                        <div class="feature-item">CDN для медиа</div>
+                    </div>
+                </div>
+                
+                <div class="project-tech">
+                    <h4>Технологии:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Prisma</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">AWS S3</span>
+                    </div>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="stat">
+                        <div class="stat-value">42+</div>
+                        <div class="stat-label">Компонентов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">20+</div>
+                        <div class="stat-label">Страниц</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">75+</div>
+                        <div class="stat-label">Функций</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">18K+</div>
+                        <div class="stat-label">Строк кода</div>
+                    </div>
+                </div>
+                
+                <div class="demo-buttons">
+                    <a href="social-media-platform/demo/index.html" class="demo-btn primary">
+                        💬 Открыть демо
+                    </a>
+                    <a href="social-media-platform/" class="demo-btn secondary">
+                        📁 Исходный код
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Learning Management System -->
+            <div class="project-demo">
+                <div class="project-title">
+                    <span class="project-icon">🎓</span>
+                    <span>Learning Management System</span>
+                </div>
+                <p class="project-description">
+                    Платформа онлайн-обучения с видео-курсами, интерактивным тестированием, автоматической сертификацией и прогресс-трекингом.
+                </p>
+                
+                <div class="project-features">
+                    <h4>Ключевые возможности:</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">Видео-плеер с закладками</div>
+                        <div class="feature-item">Система тестов и квизов</div>
+                        <div class="feature-item">Автогенерация сертификатов</div>
+                        <div class="feature-item">Прогресс-трекинг</div>
+                        <div class="feature-item">Интеграция с Zoom</div>
+                        <div class="feature-item">Мультиязычность</div>
+                    </div>
+                </div>
+                
+                <div class="project-tech">
+                    <h4>Технологии:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">RxJS</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">FFmpeg</span>
+                    </div>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="stat">
+                        <div class="stat-value">38+</div>
+                        <div class="stat-label">Компонентов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">22+</div>
+                        <div class="stat-label">Страниц</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">65+</div>
+                        <div class="stat-label">Функций</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">14K+</div>
+                        <div class="stat-label">Строк кода</div>
+                    </div>
+                </div>
+                
+                <div class="demo-buttons">
+                    <a href="learning-management-system/demo/index.html" class="demo-btn primary">
+                        🎓 Открыть демо
+                    </a>
+                    <a href="learning-management-system/" class="demo-btn secondary">
+                        📁 Исходный код
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 60px; color: white;">
+            <h3>💡 Все проекты работают в демо-режиме</h3>
+            <p style="margin-top: 15px; opacity: 0.9;">
+                Демонстрируют функциональность без запуска серверных приложений.<br>
+                В реальных проектах используются полнофункциональные backend системы.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

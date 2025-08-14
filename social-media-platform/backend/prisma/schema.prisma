@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  username    String   @unique
+  displayName String
+  bio         String?
+  avatar      String?
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  posts       Post[]
+  comments    Comment[]
+  likes       Like[]
+  followers   Follow[] @relation("UserFollowers")
+  following   Follow[] @relation("UserFollowing")
+  
+  sentMessages     Message[] @relation("MessageSender")
+  receivedMessages Message[] @relation("MessageReceiver")
+  
+  chatMembers ChatMember[]
+  reports     Report[]
+  
+  @@map("users")
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  content     String
+  mediaUrls   String[]
+  mediaType   String?
+  authorId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author   User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments Comment[]
+  likes    Like[]
+  reports  Report[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  postId    String
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  likes  Like[]
+
+  @@map("comments")
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  userId    String
+  postId    String?
+  commentId String?
+  createdAt DateTime @default(now())
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post    Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId])
+  @@unique([userId, commentId])
+  @@map("likes")
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("UserFollowers", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("UserFollowing", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
+
+model Chat {
+  id        String   @id @default(cuid())
+  name      String?
+  isGroup   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  members  ChatMember[]
+  messages Message[]
+
+  @@map("chats")
+}
+
+model ChatMember {
+  id     String @id @default(cuid())
+  chatId String
+  userId String
+
+  chat User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user Chat @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@unique([chatId, userId])
+  @@map("chat_members")
+}
+
+model Message {
+  id         String   @id @default(cuid())
+  content    String
+  mediaUrl   String?
+  chatId     String
+  senderId   String
+  receiverId String?
+  createdAt  DateTime @default(now())
+  readAt     DateTime?
+
+  chat     Chat @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  sender   User @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver User? @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+model Report {
+  id       String @id @default(cuid())
+  reason   String
+  postId   String?
+  userId   String
+  status   String @default("pending")
+  createdAt DateTime @default(now())
+
+  post Post? @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("reports")
+}

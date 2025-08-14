@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Platform - Демо</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #e91e63 0%, #9c27b0 100%); min-height: 100vh; }
+        .demo-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .demo-header { text-align: center; color: white; margin-bottom: 40px; }
+        .demo-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .demo-header p { font-size: 1.2rem; opacity: 0.9; }
+        .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .demo-card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .demo-card:hover { transform: translateY(-5px); }
+        .demo-card h3 { color: #e91e63; margin-bottom: 15px; }
+        .demo-card p { color: #666; margin-bottom: 20px; }
+        .demo-btn { background: #e91e63; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
+        .demo-btn:hover { background: #c2185b; }
+        .features-list { list-style: none; margin: 20px 0; }
+        .features-list li { padding: 8px 0; color: #555; }
+        .features-list li:before { content: "💬"; margin-right: 10px; }
+        .back-btn { position: fixed; top: 20px; left: 20px; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; backdrop-filter: blur(10px); }
+        .back-btn:hover { background: rgba(255,255,255,0.3); }
+        .social-demo { background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .post-demo { background: white; border-radius: 8px; padding: 15px; margin: 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; background: #e91e63; display: inline-flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 10px; }
+        .post-content { color: #333; margin: 10px 0; }
+        .post-actions { display: flex; gap: 15px; color: #666; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.history.back()">← Назад к портфолио</button>
+    
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>📱 Social Media Platform</h1>
+            <p>Социальная платформа с real-time функциями</p>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3>📝 Лента постов</h3>
+                <p>Система постов с медиа-контентом и взаимодействием</p>
+                <div class="social-demo">
+                    <div class="post-demo">
+                        <div style="display: flex; align-items: center;">
+                            <div class="user-avatar">И</div>
+                            <div>
+                                <strong>Михаил Сергеев</strong>
+                                <div style="font-size: 0.8rem; color: #666;">2 часа назад</div>
+                            </div>
+                        </div>
+                        <div class="post-content">Работаю над новым проектом! 🚀</div>
+                        <div class="post-actions">
+                            <span>❤️ 24</span>
+                            <span>💬 8</span>
+                            <span>🔄 3</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="features-list">
+                    <li>Создание постов с медиа</li>
+                    <li>Лайки и комментарии</li>
+                    <li>Репосты и упоминания</li>
+                    <li>Хештеги и поиск</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('posts')">Демо постов</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>💬 Real-time чат</h3>
+                <p>Мгновенные сообщения и групповые чаты</p>
+                <div class="social-demo">
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 8px; margin: 5px 0;">
+                        <strong>Анна:</strong> Привет! Как дела?
+                    </div>
+                    <div style="background: #e8f5e8; padding: 10px; border-radius: 8px; margin: 5px 0; text-align: right;">
+                        <strong>Вы:</strong> Отлично! Работаю над проектом
+                    </div>
+                </div>
+                <ul class="features-list">
+                    <li>Личные сообщения</li>
+                    <li>Групповые чаты</li>
+                    <li>Отправка файлов</li>
+                    <li>Статусы "онлайн"</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('chat')">Демо чата</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>👥 Подписки</h3>
+                <p>Система подписок и рекомендаций</p>
+                <ul class="features-list">
+                    <li>Подписки на пользователей</li>
+                    <li>Рекомендации друзей</li>
+                    <li>Персонализированная лента</li>
+                    <li>Популярные авторы</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('follows')">Демо подписок</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>🤖 Модерация</h3>
+                <p>AI-модерация контента и безопасность</p>
+                <ul class="features-list">
+                    <li>Автоматическая модерация</li>
+                    <li>Детекция спама</li>
+                    <li>Фильтрация контента</li>
+                    <li>Система жалоб</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('moderation')">Демо модерации</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>📱 Мобильное приложение</h3>
+                <p>React Native приложение для iOS и Android</p>
+                <ul class="features-list">
+                    <li>Нативная производительность</li>
+                    <li>Push-уведомления</li>
+                    <li>Офлайн режим</li>
+                    <li>Камера и галерея</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('mobile')">Демо мобильного</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>⚙️ Технологии</h3>
+                <p>Современный стек для социальных сетей</p>
+                <ul class="features-list">
+                    <li>Next.js + React</li>
+                    <li>Prisma + PostgreSQL</li>
+                    <li>Redis для кеширования</li>
+                    <li>AWS S3 для медиа</li>
+                    <li>Socket.io для real-time</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('tech')">Техническая информация</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDemo(type) {
+            const demos = {
+                posts: 'Демо системы постов:\n\n• Создание постов с текстом и медиа\n• Лайки, комментарии, репосты\n• Хештеги и упоминания\n• Поиск по контенту\n• Персонализированная лента\n• Тренды и популярные посты\n\nВ реальном проекте - полнофункциональная социальная лента.',
+                chat: 'Демо real-time чата:\n\n• Мгновенные сообщения\n• Групповые чаты\n• Отправка файлов и медиа\n• Статусы "онлайн/офлайн"\n• История сообщений\n• Уведомления о новых сообщениях\n\nВ реальном проекте - WebSocket соединения.',
+                follows: 'Демо системы подписок:\n\n• Подписки на пользователей\n• Рекомендации друзей\n• Алгоритм персонализации\n• Популярные авторы\n• Взаимные подписки\n• Статистика подписчиков\n\nВ реальном проекте - ML рекомендации.',
+                moderation: 'Демо AI-модерации:\n\n• Автоматическая проверка контента\n• Детекция спама и токсичности\n• Фильтрация неприемлемого контента\n• Система жалоб пользователей\n• Модерация изображений\n• Блокировка аккаунтов\n\nВ реальном проекте - ML модели для модерации.',
+                mobile: 'Демо мобильного приложения:\n\n• React Native для iOS/Android\n• Push-уведомления\n• Офлайн синхронизация\n• Камера и галерея\n• Геолокация\n• Биометрическая аутентификация\n\nВ реальном проекте - нативные приложения в сторах.',
+                tech: 'Технические детали:\n\n• Frontend: Next.js, React, TypeScript\n• Backend: Node.js, Prisma\n• База данных: PostgreSQL\n• Кеширование: Redis\n• Файлы: AWS S3\n• Real-time: Socket.io\n• Mobile: React Native\n\n42+ компонентов, 20+ страниц, 18000+ строк кода'
+            };
+            alert(demos[type]);
+        }
+    </script>
+</body>
+</html>

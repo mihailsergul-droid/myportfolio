@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard - Демо</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); min-height: 100vh; }
+        .demo-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .demo-header { text-align: center; color: white; margin-bottom: 40px; }
+        .demo-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .demo-header p { font-size: 1.2rem; opacity: 0.9; }
+        .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .demo-card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .demo-card:hover { transform: translateY(-5px); }
+        .demo-card h3 { color: #2c3e50; margin-bottom: 15px; }
+        .demo-card p { color: #666; margin-bottom: 20px; }
+        .demo-btn { background: #3498db; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
+        .demo-btn:hover { background: #2980b9; }
+        .features-list { list-style: none; margin: 20px 0; }
+        .features-list li { padding: 8px 0; color: #555; }
+        .features-list li:before { content: "📊"; margin-right: 10px; }
+        .back-btn { position: fixed; top: 20px; left: 20px; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; backdrop-filter: blur(10px); }
+        .back-btn:hover { background: rgba(255,255,255,0.3); }
+        .chart-demo { background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 20px 0; text-align: center; }
+        .chart-placeholder { width: 100%; height: 200px; background: linear-gradient(45deg, #3498db, #2c3e50); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.history.back()">← Назад к портфолио</button>
+    
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>📈 Financial Dashboard</h1>
+            <p>Аналитическая панель для финансового мониторинга</p>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3>💰 Дашборд</h3>
+                <p>Главная панель с ключевыми финансовыми метриками</p>
+                <div class="chart-demo">
+                    <div class="chart-placeholder">Интерактивные графики баланса</div>
+                </div>
+                <ul class="features-list">
+                    <li>Баланс счетов в реальном времени</li>
+                    <li>Динамика доходов и расходов</li>
+                    <li>Категории трат</li>
+                    <li>Прогнозы и тренды</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('dashboard')">Демо дашборда</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>📊 Аналитика</h3>
+                <p>Детальный анализ финансовых данных</p>
+                <div class="chart-demo">
+                    <div class="chart-placeholder">ML-прогнозирование трендов</div>
+                </div>
+                <ul class="features-list">
+                    <li>Интерактивные графики Chart.js</li>
+                    <li>D3.js визуализации</li>
+                    <li>Машинное обучение для прогнозов</li>
+                    <li>Экспорт в Excel/PDF</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('analytics')">Демо аналитики</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>🔔 Уведомления</h3>
+                <p>Система алертов и автоматических уведомлений</p>
+                <ul class="features-list">
+                    <li>Алерты по лимитам трат</li>
+                    <li>Уведомления о платежах</li>
+                    <li>Напоминания о счетах</li>
+                    <li>Аномалии в тратах</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('alerts')">Демо уведомлений</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>🏦 Интеграции</h3>
+                <p>Подключение к банковским API и сервисам</p>
+                <ul class="features-list">
+                    <li>Синхронизация с банками</li>
+                    <li>Автоматический импорт транзакций</li>
+                    <li>Категоризация операций</li>
+                    <li>Безопасное хранение данных</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('integrations')">Демо интеграций</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>🎯 Цели и бюджеты</h3>
+                <p>Планирование и контроль финансовых целей</p>
+                <ul class="features-list">
+                    <li>Создание финансовых целей</li>
+                    <li>Бюджетирование по категориям</li>
+                    <li>Трекинг прогресса</li>
+                    <li>Рекомендации по экономии</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('goals')">Демо целей</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>⚙️ Технологии</h3>
+                <p>Современный стек для финансовой аналитики</p>
+                <ul class="features-list">
+                    <li>Vue.js 3 + Composition API</li>
+                    <li>Chart.js + D3.js</li>
+                    <li>Python + FastAPI</li>
+                    <li>PostgreSQL</li>
+                    <li>Machine Learning</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('tech')">Техническая информация</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDemo(type) {
+            const demos = {
+                dashboard: 'Демо финансового дашборда:\n\n• Интерактивные графики баланса\n• Карточки с ключевыми метриками\n• Динамика доходов/расходов\n• Категории трат с визуализацией\n• Прогнозы на основе ML\n\nВ реальном проекте - живые данные из банковских API.',
+                analytics: 'Демо аналитики:\n\n• Chart.js графики продаж\n• D3.js интерактивные диаграммы\n• ML-прогнозирование трендов\n• Анализ паттернов трат\n• Экспорт отчетов\n\nВ реальном проекте - полная аналитическая система.',
+                alerts: 'Демо системы уведомлений:\n\n• Алерты превышения бюджета\n• Уведомления о крупных тратах\n• Напоминания о платежах\n• Детекция аномалий\n• Настраиваемые правила\n\nВ реальном проекте - push/email уведомления.',
+                integrations: 'Демо интеграций:\n\n• Подключение к банковским API\n• Автоматический импорт транзакций\n• Синхронизация счетов\n• Категоризация операций\n• Безопасное хранение\n\nВ реальном проекте - интеграция с 50+ банками.',
+                goals: 'Демо целей и бюджетов:\n\n• Создание финансовых целей\n• Планирование бюджета\n• Трекинг прогресса\n• Рекомендации по экономии\n• Визуализация достижений\n\nВ реальном проекте - персональный финансовый помощник.',
+                tech: 'Технические детали:\n\n• Frontend: Vue.js 3, Chart.js, D3.js\n• Backend: Python, FastAPI\n• База данных: PostgreSQL\n• ML: scikit-learn, pandas\n• Развертывание: Docker\n• Безопасность: JWT, шифрование\n\n28+ компонентов, 12+ страниц, 9500+ строк кода'
+            };
+            alert(demos[type]);
+        }
+    </script>
+</body>
+</html>

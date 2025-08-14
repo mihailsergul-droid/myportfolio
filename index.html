@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Frontend Developer - Резюме</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+    
+    <div class="geometric-bg">
+        <div class="geometric-shape geo-triangle"></div>
+        <div class="geometric-shape geo-square"></div>
+        <div class="geometric-shape geo-hexagon"></div>
+    </div>
+    
+    <div class="particles-container">
+        <div class="particle" v-for="n in 30" :key="n" :style="getParticleStyle(n)"></div>
+    </div>
+    
+    <div class="animated-bg">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    
+    <div id="app">
+        <header class="header parallax-bg">
+            <div class="header-overlay"></div>
+            <div class="container">
+                <h1 class="fade-in-up">{{ profile.name }}</h1>
+                <p class="title fade-in-up delay-1">{{ profile.title }}</p>
+                <div class="contacts fade-in-up delay-2">
+                    <span class="contact-item"><i class="fas fa-envelope"></i> {{ profile.email }}</span>
+                    <span class="contact-item"><i class="fas fa-phone"></i> {{ profile.phone }}</span>
+                    <span class="contact-item"><i class="fab fa-github"></i> {{ profile.github }}</span>
+                </div>
+                <div class="demo-all-btn fade-in-up delay-3" style="margin-top: 30px;">
+                    <a href="demo.html" class="demo-all-link">
+                        <i class="fas fa-rocket"></i> Посмотреть все демо
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="section animate-on-scroll">
+                <h2 class="section-title">О себе</h2>
+                <p class="about-text">{{ profile.about }}</p>
+            </section>
+
+            <section class="section animate-on-scroll floating-card">
+                <h2 class="section-title text-reveal">Навыки</h2>
+                <div class="skills">
+                    <div v-for="(skill, index) in skills" :key="skill.category" class="skill-group parallax-element" :style="{animationDelay: index * 0.2 + 's'}">
+                        <h3>{{ skill.category }}</h3>
+                        <div class="skill-tags">
+                            <span v-for="(tech, techIndex) in skill.technologies" :key="tech" class="tag skill-tag glow-on-hover" :style="{animationDelay: (index * 0.2 + techIndex * 0.1) + 's'}">{{ tech }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section animate-on-scroll floating-card">
+                <h2 class="section-title text-reveal">Опыт работы</h2>
+                <div class="timeline">
+                    <div v-for="(job, index) in experience" :key="job.id" class="job timeline-item parallax-element" :class="{left: index % 2 === 0, right: index % 2 === 1}">
+                        <div class="timeline-content glow-on-hover">
+                            <h3>{{ job.position }}</h3>
+                            <p class="company">{{ job.company }} | {{ job.period }}</p>
+                            <ul>
+                                <li v-for="task in job.tasks" :key="task">{{ task }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section class="section animate-on-scroll stats-section">
+                <h2 class="section-title">Статистика</h2>
+                <div class="stats-grid">
+                    <div v-for="stat in stats" :key="stat.label" class="stat-item animate-on-scroll">
+                        <div class="stat-number" :data-target="stat.value">0</div>
+                        <div class="stat-text">{{ stat.label }}</div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

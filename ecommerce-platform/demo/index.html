@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Platform - Демо</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .demo-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .demo-header { text-align: center; color: white; margin-bottom: 40px; }
+        .demo-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .demo-header p { font-size: 1.2rem; opacity: 0.9; }
+        .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .demo-card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .demo-card:hover { transform: translateY(-5px); }
+        .demo-card h3 { color: #667eea; margin-bottom: 15px; }
+        .demo-card p { color: #666; margin-bottom: 20px; }
+        .demo-btn { background: #667eea; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
+        .demo-btn:hover { background: #5a67d8; }
+        .features-list { list-style: none; margin: 20px 0; }
+        .features-list li { padding: 8px 0; color: #555; }
+        .features-list li:before { content: "✓"; color: #667eea; font-weight: bold; margin-right: 10px; }
+        .back-btn { position: fixed; top: 20px; left: 20px; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; backdrop-filter: blur(10px); }
+        .back-btn:hover { background: rgba(255,255,255,0.3); }
+        .credentials { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.history.back()">← Назад к портфолио</button>
+    
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🛍️ E-commerce Platform</h1>
+            <p>Enterprise-уровень платформа электронной коммерции</p>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3>🏪 Интернет-магазин</h3>
+                <p>Полнофункциональный магазин с каталогом, корзиной и оформлением заказов</p>
+                <ul class="features-list">
+                    <li>Каталог с фильтрами и поиском</li>
+                    <li>Корзина и избранное</li>
+                    <li>Система скидок и купонов</li>
+                    <li>Персонализированные рекомендации</li>
+                    <li>Отслеживание заказов</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('shop')">Демо магазина</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>⚙️ Админ-панель</h3>
+                <p>Система управления с 12 разделами для полного контроля</p>
+                <ul class="features-list">
+                    <li>Управление товарами и категориями</li>
+                    <li>Система заказов и клиентов</li>
+                    <li>Аналитика и отчеты</li>
+                    <li>API интеграции</li>
+                    <li>Массовые операции</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('admin')">Демо админки</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>📊 Аналитика</h3>
+                <p>Детальная аналитика продаж и поведения клиентов</p>
+                <ul class="features-list">
+                    <li>Графики продаж в реальном времени</li>
+                    <li>A/B тестирование</li>
+                    <li>Анализ конверсии</li>
+                    <li>Экспорт отчетов</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('analytics')">Демо аналитики</button>
+            </div>
+            
+            <div class="demo-card">
+                <h3>🔧 Технологии</h3>
+                <p>Современный стек технологий</p>
+                <ul class="features-list">
+                    <li>Vue.js 3 + Composition API</li>
+                    <li>TypeScript</li>
+                    <li>Node.js + Express</li>
+                    <li>REST API</li>
+                    <li>Система миграций</li>
+                </ul>
+                <button class="demo-btn" onclick="showDemo('tech')">Техническая информация</button>
+            </div>
+        </div>
+        
+        <div class="credentials">
+            <h3 style="color: white; text-align: center; margin-bottom: 15px;">Тестовые аккаунты:</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; color: white;">
+                <div>
+                    <strong>👨‍💼 Администратор:</strong><br>
+                    Email: admin@example.com<br>
+                    Пароль: admin
+                </div>
+                <div>
+                    <strong>👤 Пользователь:</strong><br>
+                    Email: user@example.com<br>
+                    Пароль: user
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDemo(type) {
+            const demos = {
+                shop: 'Демо интернет-магазина:\n\n• Каталог товаров с фильтрами\n• Корзина покупок\n• Система скидок\n• Персонализация\n• Отслеживание заказов\n\nВ реальном проекте здесь был бы полнофункциональный магазин.',
+                admin: 'Демо админ-панели:\n\n• Управление товарами\n• Система заказов\n• Управление клиентами\n• Аналитика продаж\n• API интеграции\n• Массовые операции\n• Резервное копирование\n\nВ реальном проекте - полная система управления.',
+                analytics: 'Демо аналитики:\n\n• Графики продаж\n• Анализ клиентов\n• A/B тестирование\n• Конверсия воронки\n• Экспорт данных\n• Прогнозирование\n\nВ реальном проекте - интерактивные дашборды.',
+                tech: 'Технические детали:\n\n• Frontend: Vue.js 3, TypeScript, Vuex\n• Backend: Node.js, Express\n• База данных: MongoDB\n• API: REST с документацией\n• Развертывание: Docker\n• Тестирование: Jest, Cypress\n\n50+ компонентов, 25+ страниц, 15000+ строк кода'
+            };
+            alert(demos[type]);
+        }
+    </script>
+</body>
+</html>

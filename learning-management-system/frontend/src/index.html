@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Learning Management System</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: white;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .demo-banner {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .demo-credentials {
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin: 0.5rem;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    <div>🎓 Learning Management System Demo</div>
+    <div>
+      <span class="demo-credentials">Student: student@lms.com / student123</span>
+      <span class="demo-credentials">Instructor: instructor@lms.com / instructor123</span>
+    </div>
+  </div>
+  
+  <app-root>
+    <div class="loading-container">
+      <div class="spinner"></div>
+      <h2>Loading Learning Management System...</h2>
+      <p>Preparing your educational experience</p>
+    </div>
+  </app-root>
+</body>
+</html>
